@@ -1,0 +1,94 @@
+/*Image shaping*/
+.round-image {
+    width: 190px;
+    /* Set the width of the image */
+    height: 190px;
+    /* Set the height of the image */
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Document aligments*/
+body,
+html {
+    background-color: #f8f9fb;
+    height: 50%;
+    display: grid;
+    place-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: large;
+
+}
+
+.centered-container {
+    width: 180%;
+    text-align: center;
+}
+
+/*Input shaping */
+
+legend {
+    margin-right: auto;
+    margin-left: 1px;
+}
+
+label, input[type="text"], input[type="password"] {
+    padding-left: 20px;
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.right {
+    align-items: right;
+}
+
+fieldset {
+    border: 2px dotted #dcdcdc;
+    padding: 17px;
+    background-color: #ffffff;
+    margin: 15px;
+
+}
+
+/*Alle Buttons sind abgerundet und grau*/
+button {
+    border: none;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+
+.grey {
+    border-radius: 0px;
+    background-color: #a9a9a9;
+}
+
+.blue {
+    background-color: #2c71f3;
+    padding: 10px 20px;
+    border-radius: 0px;
+}
+
+/*register*/
+input[type="button"] {
+    border: none;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 10px 25px;
+    background-color: #a9a9a9;
+    margin: 3px;
+}
+
+/*login*/
+input[type="submit"] {
+    border: none;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #2c71f3;
+    padding: 10px 25px;
+    margin: 3px;
+}

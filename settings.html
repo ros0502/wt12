@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Profile Settings</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Profile Settings</h1>
+    </header>
+    <form>
+      <fieldset>
+        <legend>Base Data</legend>
+        <label for="firstname">First Name:</label>
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          required
+          placeholder="Your name"
+        /><br />
+        <label for="surname">Your surname:</label>
+        <input
+          type="text"
+          id="surname"
+          name="surname"
+          required
+          placeholder="Your surname"
+        /><br />
+        <label for="beverage">Coffe or Tea?</label>
+        <select id="beverage" name="beverage">
+          <option value="Coffe">Coffee</option>
+          <option value="Tea">Tea</option>
+          <option value="Neither">Neither nor</option></select
+        ><br />
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <legend>Tell Something About Yourself</legend>
+        <textarea
+          id="comment"
+          name="comment"
+          placeholder="Leave a comment"
+        ></textarea>
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <legend>Prefered Chat Layout</legend>
+        <label for="layout1">
+          <input type="radio" id="layout1" name="layout" value="layout1" />
+          Username and message in one line </label
+        ><br />
+        <label for="layout2">
+          <input type="radio" id="layout2" name="layout" value="layout2" />
+          Username and message in seperated lines </label
+        ><br />
+      </fieldset>
+    </form>
+    <div>
+      <button type="button" onclick="window.location.href='friends.html'">
+        Cancel
+      </button>
+
+      <button type="button" onclick="window.location.href='settings.html'">
+        save
+      </button>
+    </div>
+  </body>
+</html>
