@@ -1,9 +1,7 @@
 /*Image shaping*/
 .round-image {
     width: 190px;
-    /* Set the width of the image */
     height: 190px;
-    /* Set the height of the image */
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -13,43 +11,41 @@
 body,
 html {
     background-color: #f8f9fb;
-    height: 50%;
     display: grid;
     place-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif, Helvetica, sans-serif;
     font-weight: bold;
     font-size: large;
-
-}
-
-.centered-container {
-    width: 180%;
-    text-align: center;
 }
 
 /*Input shaping */
+.center {
+    display: table;
+    text-align: right;
+    margin: 0 auto;
+    align-items: right;
+}
 
 legend {
     margin-right: auto;
     margin-left: 1px;
 }
 
-label, input[type="text"], input[type="password"] {
+label,
+input[type="text"],
+input[type="password"] {
     padding-left: 20px;
     font-size: 18px;
     padding: 5px 10px;
     margin: 5px;
-}
-
-.right {
-    align-items: right;
+    text-align: left;
 }
 
 fieldset {
     border: 2px dotted #dcdcdc;
-    padding: 17px;
     background-color: #ffffff;
     margin: 15px;
+    width: 150%;
 
 }
 
@@ -73,7 +69,7 @@ button {
     border-radius: 0px;
 }
 
-/*register*/
+/*register button*/
 input[type="button"] {
     border: none;
     font-size: 20px;
@@ -83,7 +79,7 @@ input[type="button"] {
     margin: 3px;
 }
 
-/*login*/
+/*login button*/
 input[type="submit"] {
     border: none;
     font-size: 20px;
@@ -91,4 +87,26 @@ input[type="submit"] {
     background-color: #2c71f3;
     padding: 10px 25px;
     margin: 3px;
+}
+
+/*Link responsiveness*/
+
+a:link {
+    text-decoration: none;
+    color: #5674aa;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #e5801b;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #b831ea;
+}
+
+a:active {
+    text-decoration: underline;
+    color: #050f5e;
 }

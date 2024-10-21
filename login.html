@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="centered-container">
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
 
-    <body>
-        <img src="../images/chat.png" alt="Chat" class="round-image" />
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-        <h1>Please sign in</h1>
+<body>
+    <img src="./images/chat.png" alt="Chat" class="round-image" />
 
-        <fieldset>
-            <legend>Login</legend>
-            <form id="login" action="friends.html">
+    <h1>Please sign in</h1>
+
+    <fieldset>
+        <legend>Login</legend>
+        <form id="login" action="friends.html">
+            <div class="center">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required placeholder="Username" /><br />
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required placeholder="Password" /><br />
-            </form>
-        </fieldset>
-
+            </div>
+        </form>
+    </fieldset>
+    <div class="center">
         <a href="register.html"><input type="button" value="Register" /></a>
-        <input type="submit" form="login" value="Login"/>
-    </body>
-</div>
+        <input type="submit" form="login" value="Login" />
+    </div>
+</body>
 
 </html>
