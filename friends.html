@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="styleluka.css" />
   </head>
 
 <body>
@@ -20,14 +20,16 @@
 
 </p>
 
-    <hr>
-        <ul>
-            <li><a href ="chat.html">Tom (3)</a></li>
-            <li><a href ="">Marvin (1)</a></li>
-            <li><a href ="">Tick</a></li>
-            <li><a href ="">Trick</a></li>
+
+    <hr class="dashed">
+        <ul class="friends-list">
+            <li>Tom <span class="notification" id="notif-tom">1</span></li>
+            <li>Marvin <span class="notification" id="notif-marvin">3</span></li>
+            <li>Tick<span class="notification" id="notif-tick"></span></li>
+            <li>Trick<span class="notification" id="notif-trick"></span></li>
         </ul>
-    <hr>
+
+    <hr class="dashed">
     <h2>New Requests</h2>
     
     <ol>
@@ -38,8 +40,8 @@
 
     </ol>
 
-    <hr>
-    <form>
+    <hr class="dashed">
+    <form class="add-form">
         <input type="text" name="AddFriend" required placeholder="Add friend to list">
         <button type="submit" class="grey">Add</button>
 
