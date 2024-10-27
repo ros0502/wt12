@@ -10,7 +10,7 @@ html, body {
     padding: 20px;
     padding-top: 5px;
     text-align:left;
-    width: 40%; 
+    width: 100%; 
 }
 
 .dashed {
@@ -197,7 +197,7 @@ a:active {
 
 .centered-container {
     width: 100%;
-    max-width: 4t00px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -243,7 +243,7 @@ a:active {
 }
 
 @media screen and (max-width: 900px) {
-    #layout1, #layout2{
-        flex-direction: column;
+    .container{
+        width: 100%;
     }
 }
