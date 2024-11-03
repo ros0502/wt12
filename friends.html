@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
-<body>
+<body class="leftalligned">
     <h1>Friends</h1>
     <p>
     <a href="logout.html">&lt; 
@@ -20,14 +20,14 @@
 
 </p>
 
-    <hr>
-        <ul>
-            <li><a href ="chat.html">Tom (3)</a></li>
-            <li><a href ="">Marvin (1)</a></li>
-            <li><a href ="">Tick</a></li>
-            <li><a href ="">Trick</a></li>
+    <hr class="dashed">
+        <ul class="friends-list">
+            <li><a href="chat.html" data-count="3">Tom</a></li>
+            <li><a href="" data-count="1">Marvin</a></li>
+            <li><a href="">Tick</a></li>
+            <li><a href="">Trick</a></li>
         </ul>
-    <hr>
+    <hr class="dashed">
     <h2>New Requests</h2>
     
     <ol>
@@ -38,9 +38,9 @@
 
     </ol>
 
-    <hr>
+    <hr class="dashed">
     <form>
-        <input type="text" name="AddFriend" required placeholder="Add friend to list">
+        <input type="text" class="longinput"  name="AddFriend" required placeholder="Add friend to list">
         <button type="submit" class="grey">Add</button>
 
     </form>
