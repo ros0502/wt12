@@ -5,30 +5,41 @@ height: auto;
 box-sizing: border-box;
 }
 
+/*Profile/Friends specific*/
+.profile-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;       
+    flex-direction: row;
+    width: 100%;
+    gap: 40px;
+
+}
+
 .profile-info{
-    border: 0.5px solid gray;
-    margin: auto;  
+    border: 0.5px solid gray;  
     padding: 20px;
     padding-top: 5px;
     text-align:left;
-    width: 100%; 
+    width: auto;
+    height: 400px;
+    overflow-y: auto;
 }
 
-.dashed {
+.dashed { /*Luka*/
     border: transparent;
     border-bottom: dashed 1px #000000;
-    background-color: #ffffff;
-    margin: 10px;
+    margin: 5px 10px 5px 10px;
 }
 
-.friends-list{
+.friends-list{ /*Luka*/
     border: 0.5px solid gray;
     border-radius: 5px;
-    margin: left;  
+    margin: 10px;
     padding: 20px;
     padding-top: 5px;
     text-align:left;
-    width: 85%;
+    width: auto;
 }
 
 .friends-list li{
@@ -37,12 +48,24 @@ box-sizing: border-box;
     border-bottom: none;
 }
 
-.picture {
+.notification { /*Luka*/
+    float: right;
+    min-width: 1.25rem;
+    width: auto;
+    text-align: center;
+    background-color: #436cdf;
+    color: white;
+}
+
+.picture { /*Luka*/
     width: 400px;
     height: 400px;
-    float: left;
-    margin-right: 20px;
 }
+
+.add-form { /*Luka*/
+    margin: 5px 10px 5px 10px;
+}
+/*End of Profile/Friends specifics*/
 
 a:link {
     color: green;
