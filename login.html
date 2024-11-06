@@ -8,7 +8,7 @@
 
     <body class="centered">
         <div class="centered-container">
-        <img src="../images/chat.png" alt="Chat" class="round-image" />
+        <img src="chat.png" alt="Chat" class="round-image" />
 
         <h1>Please sign in</h1>
 
@@ -23,11 +23,19 @@
         </fieldset>
 
         <div class="button-container">
-            <button type="button" onclick="window.location.href='register.html'" class="grey">Register</button>
-            <button class="blue" type="submit" form="login" value="Login"> Login </button>
+            <form action="register.html" method="get">
+                <button type="submit" class="grey">Register</button>
+            </form>
+            <form action="friends.html" method="get">
+                <button type="submit" class="blue" form="login" value="login">Login</button>
+            </form>
+
         </div>
     </div>
     </body>
 
+
+
+ 
 
 </html>
