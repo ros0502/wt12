@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="centered-container">
+
 
     <head>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
 
-    <body>
+    <body class="centered">
+        <div class="centered-container">
         <img src="../images/chat.png" alt="Chat" class="round-image" />
 
         <h1>Please sign in</h1>
@@ -21,9 +22,12 @@
             </form>
         </fieldset>
 
-        <a href="register.html"><input type="button" value="Register" /></a>
-        <input type="submit" form="login" value="Login"/>
+        <div class="button-container">
+            <button type="button" onclick="window.location.href='register.html'" class="grey">Register</button>
+            <button class="blue" type="submit" form="login" value="Login"> Login </button>
+        </div>
+    </div>
     </body>
-</div>
+
 
 </html>
