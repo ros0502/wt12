@@ -66,6 +66,19 @@ box-sizing: border-box; /*Ronja mach bitte die Änderungen :>*/
 .add-form {
     margin: 5px 10px 5px 10px;
 }
+
+#friend-requests li {
+    margin: 10px;
+}
+
+#friend-requests li > * {
+    margin: 5px;
+}
+
+.friends:link , .friends:visited , .friends:hover , .friends:active {
+    color: black;
+}
+
 /*End of Profile/Friends specifics*/
 
 a:link {
