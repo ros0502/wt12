@@ -10,7 +10,8 @@
       <h1>Profile Settings</h1>
     </header>
     <form>
-      <fieldset>
+      <fieldset class="basedata">
+
         <legend>Base Data</legend>
         <label for="firstname">First Name:</label>
         <input
@@ -36,8 +37,9 @@
         ><br />
       </fieldset>
     </form>
+
     <form>
-      <fieldset>
+      <fieldset class="settings">
         <legend>Tell Something About Yourself</legend>
         <textarea
           id="comment"
@@ -46,8 +48,9 @@
         ></textarea>
       </fieldset>
     </form>
+
     <form>
-      <fieldset>
+      <fieldset class="settings">
         <legend>Prefered Chat Layout</legend>
         <label for="layout1">
           <input type="radio" id="layout1" name="layout" value="layout1" />
@@ -59,14 +62,21 @@
         ><br />
       </fieldset>
     </form>
-    <div>
-      <button type="button" onclick="window.location.href='friends.html'">
-        Cancel
-      </button>
 
-      <button type="button" onclick="window.location.href='settings.html'">
-        save
-      </button>
+    <div class="button-container">
+      <form action="friends.html" method="get">
+        <button class="grey" type="submit">
+          Cancel
+        </button>
+      </form>
+
+      <form action="settings.html" method="get">
+        <button class="blue" type="submit">
+          Save
+        </button>
+      </form>
     </div>
+
+
   </body>
 </html>

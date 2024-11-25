@@ -2,9 +2,14 @@
 <html lang="en">
 
 
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
+
+
+
+
+    <body class="centered">
+        <div class="centered-container">
+        <img src="chat.png" alt="Chat" class="round-image" />
+
 
 <body>
     <img src="./images/chat.png" alt="Chat" class="round-image" />
@@ -19,13 +24,24 @@
                 <input type="text" id="username" name="username" required placeholder="Username" /><br />
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required placeholder="Password" /><br />
-            </div>
-        </form>
-    </fieldset>
-    <div class="center">
-        <a href="register.html"><input type="button" value="Register" /></a>
-        <input type="submit" form="login" value="Login" />
+
+            </form>
+        </fieldset>
+
+        <div class="button-container">
+            <form action="register.html" method="get">
+                <button type="submit" class="grey">Register</button>
+            </form>
+            <form action="friends.html" method="get">
+                <button type="submit" class="blue" form="login" value="login">Login</button>
+            </form>
+
+        </div>
     </div>
-</body>
+    </body>
+
+
+
+ 
 
 </html>

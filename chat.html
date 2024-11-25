@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    
 <body>
 
     <h1>
-        Chat with Tom
+        Chat with <span id="chat-partner-name">Tom</span>
     </h1>
 
     <p>
         <a href="friends.html">&lt; 
             Back
-        </a> | 
+        </a>| 
 
         <a href="profile.html">
             Profile
@@ -27,20 +27,25 @@
     </p>
 
     <hr>
-    Tom: Hallo, Welt!
-    <br>
-    <br>
-    Jerry: Wie gehts?
+
+    <div id="chat-window" class="chat-window">
+    <hr>
+        <!-- Nachrichten werden hier angezeigt -->
+    </div>
 
     <hr>
-    <form>
-        <input type="text" name="NewMessage" required placeholder="New Message">
 
-        <button type="submit">
+
+    <hr>
+    <form id="message-form">
+        <input id="messageInput" type="text" name="messageInput" required placeholder="New Message">
+
+        <button class="blue" type="submit" id="sendButton">
             Send
         </button>
     </form>
 
+    <script src="jsChat.js"></script>
 </body>
 
 </html>
