@@ -43,31 +43,10 @@ box-sizing: border-box; /*Ronja mach bitte die Änderungen :>*/
     width: auto;
 }
 
-.chat-window{
- 
-    justify-content: space-between;
-    
-    border: 0.5px solid gray;
-    border-radius: 5px;
-    margin: 16px;
-    padding: 20px;
-    padding-top: 5px;
-    text-align:left;
-    width: auto;
-    line-height: 24px;
-    word-wrap: break-word;
-}
-
-.timestamp {
-    font-size: 16px;
-    color: #888;
-}
-
 .friends-list li{
     list-style-type: none;
     padding: 10px;
     border-bottom: none;
-    left: 150px;
 }
 
 .notification {
@@ -87,6 +66,19 @@ box-sizing: border-box; /*Ronja mach bitte die Änderungen :>*/
 .add-form {
     margin: 5px 10px 5px 10px;
 }
+
+#friend-requests li {
+    margin: 10px;
+}
+
+#friend-requests li > * {
+    margin: 5px;
+}
+
+.friends:link , .friends:visited , .friends:hover , .friends:active {
+    color: black;
+}
+
 /*End of Profile/Friends specifics*/
 
 a:link {
