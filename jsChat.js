@@ -1,9 +1,4 @@
 
-/*Dummy-DatenSatz ListMessages GET
-URL: https://online-lectures-cs.thi.de/chat/044bdd28-d3bd-4478-a96e-1708963fda03/message/<user>
-As an example, https://online-lectures-cs.thi.de/chat/044bdd28-d3bd-4478-a96e-1708963fda03/message/Jerry 
-sends all messages between Jerry and Tom 
-if you use the token from Tom.*/
 
 // Constants for API interaction
 const API_BASE_URL = "https://online-lectures-cs.thi.de/chat/044bdd28-d3bd-4478-a96e-1708963fda03/message";
@@ -22,9 +17,10 @@ function getChatpartner() {
 // Funktion zum Formatieren der Uhrzeit (Stunde:Minute:Sekunde)
 function formatTime(timestamp) {
     const date = new Date(timestamp * 1000); // Umwandlung von Zeit in Millisekunden
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
+    let hours = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    let seconds = date.getUTCSeconds();
+    
 
     // Formatieren der Uhrzeit, falls Minuten und Sekunden < 10
     hours = hours < 10 ? "0" + hours : hours;
@@ -87,6 +83,10 @@ function displayMessages(messages) {
 document.addEventListener('DOMContentLoaded', function () {
     const friend = getChatpartner();
     if (friend) {
+        const header = document.querySelector('h1');
+        if (header) {
+            header.textContent = `Chat mit ${friend}`;
+        }
         fetchMessages(friend); // Nachrichten des Chatpartners laden
      // Sicherstellen, dass das Eingabefeld und der Button vorhanden sind
     if (!sendButton || !messageInput) {

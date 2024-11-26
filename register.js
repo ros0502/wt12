@@ -67,6 +67,6 @@ function checkInputs() {
     }
   };
 
-  xmlhttp.open("GET", window.chatServer + "/user/" + username, false);
+  xmlhttp.open("GET", window.chatServer + "/user/" + username, true);
   xmlhttp.send();
 }
