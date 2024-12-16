@@ -2,21 +2,7 @@
 window.chatServer = "https://online-lectures-cs.thi.de/chat/37dd5362-a56e-4f4e-baec-7b776086cece";
 window.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMzY1OTkwfQ.-_ey06_uAXNfWkAoo4tqyBQYgFrEdP8b7-X6llzglT8"; // TOM Token
 
-//Code fragt den Server nach den definierten Benutzern
-/*
-const xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function () {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    let data = JSON.parse(xmlhttp.responseText);
-    console.log(data);
-  }
-};
-// Chat Server URL und Collection ID als Teil der URL
-xmlhttp.open("GET", backendUrl + "/user", true);
-// Das Token zur Authentifizierung, wenn notwendig
-xmlhttp.setRequestHeader('Authorization', 'Bearer ' + token);
-xmlhttp.send();
-*/
+
 
 //Vergleiche, ob der Username bereits existiert und lang genug ist und kennzeichne farblich
 function checkInputs() {
@@ -43,7 +29,8 @@ function checkInputs() {
         document.getElementById('username').style.border = greenBorder; //Green border mit CSS
         
       }
-      //Das Passwort muss min. 8 Zeichen haben
+      
+      
       if (password.length < 8) {
         console.log("Password to short");
         document.getElementById('password').style.border = redBorder; //Red border mit CSS

@@ -48,6 +48,7 @@ class User implements JsonSerializable
     {
         return $this->history;
     }
+    
     //Setter für Profilinfos
     public function setFirstname($firstname)
     {
