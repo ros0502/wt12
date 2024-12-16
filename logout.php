@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     
+<?php
+    require("start.php");
+    session_unset();
+?>
+
 <head> 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
