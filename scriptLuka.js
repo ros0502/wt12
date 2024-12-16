@@ -55,13 +55,17 @@ async function loggedInUser() {
 }
 
 async function loadFriends() {
-    let response = await fetch(backendUrl + "/friend", {
+    /*let response = await fetch(backendUrl + "/friend", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         }
-    });
+    });*/
+
+
+    let response = await fetch("ajax_load_friends.php");
+    console.log(response);
     let data = await response.json();
     filledList(data);
     return data;
@@ -120,3 +124,4 @@ window.setInterval(function() {
     loadFriends();
     }, 1000);
     loadFriends(); // erstmaliger Aufruf*/
+
