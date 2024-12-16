@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="login.js"></script>
-    </head>
 
+    <?php  //Hope this works?
+        require("start.php");
+        session_start();
 
+        if (isset($_SESSION['user'])) {
+            header("Location: friends.php");
+            exit();
+        }
 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-
+            if (login($username, $password)) {
+                $_SESSION['user'] = $username;
+                header("Location: friends.php");
+                exit();
+            } else {
+                $error_message = "Invalid username or password.";
+            }
+        }
+    ?>
+    
 
     <body class="centered">
         <div class="centered-container">
