@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    require("start.php");
+
+    //session_start();
+    if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
+        header("Location: login.php");
+
+        
+
+        exit();
+    }
+    
+?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="scriptLuka.js" defer></script>
@@ -54,3 +68,4 @@
 </body>
 
 </html>
+
