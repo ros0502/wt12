@@ -1,3 +1,5 @@
+//warum greift die js implemeniterung nicht mehr, wenn ich mich registrieren möchte
+
 <?php
 
 require_once 'start.php'; // Lädt BackendService und Konstanten

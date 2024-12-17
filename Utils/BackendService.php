@@ -250,15 +250,5 @@ class BackendService{
         }
         return false;
     }
-
-    //test methode
-    public function test() {
-        try {
-            return HttpClient::get($this->base . '/test.json'); // Führt einen GET-Request aus
-        } catch (\Exception $e) {
-            error_log($e->getMessage()); // Loggt die Fehlermeldung
-        }
-        return false; // Gibt false zurück, falls etwas schiefgeht
-    }
 }
 ?>

@@ -1,3 +1,4 @@
+
 // Funktion zum Abrufen des Chatpartners aus der URL
 function getChatpartner() {
     const url = new URL(window.location.href);
@@ -61,8 +62,8 @@ function sendMessage(to, message) {
     };
 
     xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xmlhttp.send(`to=${encodeURIComponent(to)}&message=${encodeURIComponent(message)}`);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); //appication/jason
+    xmlhttp.send(`to=${encodeURIComponent(to)}&message=${encodeURIComponent(message)}`); //entweder ajax_send anpassen oder zurückbauen auf - variante mit json, dda _send message darauf angelegt ist (json stringify mit richtigen strukturen)
 }
 
 // Funktion zum Anzeigen der Nachrichten
