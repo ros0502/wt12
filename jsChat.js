@@ -62,8 +62,9 @@ function sendMessage(to, message) {
     };
 
     xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); //appication/jason
-    xmlhttp.send(`to=${encodeURIComponent(to)}&message=${encodeURIComponent(message)}`); //entweder ajax_send anpassen oder zurückbauen auf - variante mit json, dda _send message darauf angelegt ist (json stringify mit richtigen strukturen)
+    xmlhttp.setRequestHeader('Content-type', 'application/json');
+    xmlhttp.send(JSON.stringify({ msg: message, to: to }));
+
 }
 
 // Funktion zum Anzeigen der Nachrichten

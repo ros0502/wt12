@@ -1,4 +1,4 @@
-//warum greift die js implemeniterung nicht mehr, wenn ich mich registrieren möchte
+
 
 <?php
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Nutzername in der Session speichern
             $_SESSION['user'] = $username;
             header('Location: friends.php');
-            exit;
+            exit;  
         } else {
             $errorMessage = 'Registration failed. Please try again.';
         }
@@ -50,11 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="centered-container">
         <h1>Register yourself</h1>
         <!-- Fehlermeldung anzeigen -->
+
         <?php if (!empty($errorMessage)): ?>
             <div class="error"><?= htmlspecialchars($errorMessage) ?></div>
         <?php endif; ?>
+
         <!-- Registrierungsformular -->
-        <form action="register.php" method="post">
+        <form id="registerForm" action="register.php" method="post">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required placeholder="Username" /><br>
             <small id="usernameError" class="error"></small>

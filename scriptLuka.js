@@ -124,4 +124,3 @@ window.setInterval(function() {
     loadFriends();
     }, 1000);
     loadFriends(); // erstmaliger Aufruf*/
-
