@@ -10,7 +10,9 @@ if (!isset($_SESSION['user'])) {
 
 // Backend aufrufen
 $friends = $service->loadFriends();
-if ($friends) {
+
+if (is_array($friends)) {                                 //Added is_array because empty array is considered false (L)
+
     // erhaltene Friend-Objekte im JSON-Format senden 
     header('Content-Type: application/json');
     echo json_encode($friends);
@@ -23,5 +25,7 @@ if ($friends) {
  * - 200 Friends gesendet
  * - 404 Fehler
  */
-http_response_code($friends ? 200 : 404);
+
+http_response_code(is_array($friends) ? 200 : 404);    //Added is_array because empty array is considered false (L)
+
 ?>

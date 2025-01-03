@@ -30,7 +30,9 @@ $friend = htmlspecialchars($_GET['friend']);
     <meta charset = "UFT-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Chat with <?= $friend?></title>;
+
+        <title>Chat with <?= $friend?></title> <!-- removed ; from this line so it doesn't appear on top of the page-->
+
     </head>
     
 <body>
