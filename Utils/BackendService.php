@@ -30,7 +30,6 @@ class BackendService{
      */
     public function login($username, $password){
         try{
-            echo $this->link. "/login";
             $result = HttpClient::post($this->link . "/login", array(
                 "username" => $username,
                 "password" => $password
@@ -70,7 +69,6 @@ class BackendService{
      */
     public function loadUser($username){
         try {
-            echo $_SESSION["chat_token"];
             $user = HttpClient::get($this->link . "/user/" . $username, $_SESSION["chat_token"]);
             return User::fromJson($user);
         } catch (\Exception $e) {
@@ -117,7 +115,6 @@ class BackendService{
      */
     public function loadFriends(){
         try{
-            echo $_SESSION["chat_token"];
             $friend = HttpClient::get($this->link . "/friend", $_SESSION["chat_token"]);
             $friends = array();
             foreach($friend as $element){
@@ -253,14 +250,5 @@ class BackendService{
         }
         return false;
     }
-
-    public function test() {
-        try {
-        return HttpClient::get($this->base . '/test.json');
-        } catch(\Exception $e) {
-        error_log($e);
-        }
-        return false;
-        }
 }
 ?>

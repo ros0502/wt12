@@ -18,7 +18,7 @@ if(empty($friend)) {
     return;
 }
 
-if(empty($friend)) {
+if(empty($action)) {            //Changed $friend to $action because $friend was written twice (L)
     http_response_code(400);
     header('Content-Type: application/json');
     echo json_encode(["message" => "Missing action"]);
@@ -35,7 +35,6 @@ if($action === "add") {
 } else if($action === "dismiss") {
     $result = $service->friendDismiss($friend);
 }
-
 http_response_code($result ? 204 : 400);
 if(!$result) {
     header('Content-Type: application/json');

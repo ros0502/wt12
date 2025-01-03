@@ -1,36 +1,56 @@
+<?php
+
+require_once 'start.php';
+
+
+//nutzer eingeloggt?
+if(empty($_SESSION['user'])){
+    header('Location: login.php');
+    exit;
+}
+
+//chat-ziel übergeben?
+if(empty($_GET['friend'])){
+    header('Location: friends.php');
+    exit;
+}
+
+$friend = htmlspecialchars($_GET['friend']);
+
+?>
+
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 
     <head>
+    <meta charset = "UFT-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Chat with <?= $friend?></title> <!-- removed ; from this line so it doesn't appear on top of the page-->
     </head>
     
 <body>
-
-    <h1>
-        Chat with <span id="chat-partner-name">Tom</span>
+    <!-- Dynamischer header, der dem jeweiligen NAmen des Chatpartners printed -->
+    <h1 id="chat-header">
+        Chat with <?= $friend ?>
     </h1>
 
     <p>
-        <a href="friends.html">&lt; 
-            Back
-        </a>| 
+        <a href="friends.php">&lt; Back</a>| 
 
-        <a href="profile.html">
-            Profile
-        </a>|
+        <a href="profile.php"> Profile</a>|
 
-        <a href="friends.html">
-            Remove Friend
-        </a>
-
+        <a href="friends.php?action=delete&friend=<?= urlencode($friend) ?>">Remove Friend</a>
     </p>
 
     <hr>
-
     <div id="chat-window" class="chat-window">
     <hr>
-        <!-- Nachrichten werden hier angezeigt -->
+        <!-- Nachrichten werden hier mit JS gemacht -->
     </div>
 
     <hr>
