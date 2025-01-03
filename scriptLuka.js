@@ -21,6 +21,7 @@ async function logOptions(data) {
         addedFriends.push(friends[i].username);
     }
 
+
     //iterates through all users
     for (user of data) {
 
@@ -38,13 +39,16 @@ async function logOptions(data) {
         
 }
 
+
 //return all friends of current user
 async function loadFriends() {
     const response = await fetch("ajax_load_friends.php");
     const data = await response.json();
+
     filledList(data);
     return data;
 }
+
 
 
 //fill friends list with data from loadFriends()
@@ -53,6 +57,7 @@ function filledList(data) {
     //get friends lists
     const list = document.getElementById("friend-list");
     const requestedList = document.getElementById("friend-requests");
+
     requestedList.replaceChildren(); //Clears the friend requests list
     list.replaceChildren(); //Clears the friend list
 
@@ -198,3 +203,4 @@ loadUsers();
 window.setInterval(function() {
     loadFriends();
     }, 1000);
+
