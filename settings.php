@@ -1,98 +1,143 @@
 <?php
 require("start.php");
-//Pfüfen, ob in der Session-Variable user gesetzt ist 
+
+// Prüfen, ob der Benutzer eingeloggt ist
 if (isset($_SESSION["user"]) && $_SESSION["user"] != null) {
-  //Laden und Abspeichern vom Userobject über Backend-Service
-  $user = $service->loadUser($_SESSION["user"]);
-
+    $user = $service->loadUser($_SESSION["user"]); // Benutzer laden
 } else {
-  //-> wenn nicht -> login.php
-  header("Location: login.php");
-  exit();
+    header("Location: login.php");
+    exit();
 }
 
-//Aufruf beim methodenaufruf POST 
-if (isset($_POST)) {
-  //User wird geladen
-  $service->loadUser($_SESSION["user"]);
-  //Überschrieben
-  $user->setFirstname($_POST["firstname"]);
-  $user->setSurname($_POST["surname"]);
-  $user->setBeverage($_POST["beverage"]);
-  $user->setComment($_POST["comment"]);
-  $user->setLayout($_POST["layout"]);
-
-  $user->setHistory(date('Y-m-d H:i:s'));
-  //Abgespeichert
-  $service->saveUser($user);
+// Verarbeitung von POST-Daten
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user->setFirstname($_POST["firstname"] ?? $user->getFirstname());
+    $user->setSurname($_POST["surname"] ?? $user->getSurname());
+    $user->setBeverage($_POST["beverage"] ?? $user->getBeverage());
+    $user->setComment($_POST["comment"] ?? $user->getComment());
+    $user->setLayout($_POST["layout"] ?? $user->getLayout());
+    $user->setHistory(date('Y-m-d H:i:s'));
+    $service->saveUser($user); // Benutzer speichern
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <title>Profile Settings</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
-<body>
-  <header>
-    <h1>Profile Settings</h1>
-  </header>
-  <form action="settings.php" method="post">
-    <fieldset class="basedata">
-      <legend>Base Data</legend>
-      <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" name="firstname" value="<?= $user->getFirstname(); ?>" required
-        placeholder="Your name" /><br />
-      <label for="surname">Your surname:</label>
-      <input type="text" id="surname" name="surname" value="<?= $user->getSurname(); ?>" required
-        placeholder="Your surname" /><br />
-      <label for="beverage">Coffe or Tea?</label>
-      <select id="beverage" name="beverage">
-        <option value="neither" <?= $user->beverage == 'neither' ? "selected" : "" ?> >Neither</option>';
-        <option value="coffee" <?= $user->beverage == 'coffee' ? "selected" : "" ?> >Coffee</option>';
-        <option value="tea" <?= $user->beverage == 'tea' ? "selected" : "" ?> >Tea</option>';
-      </select><br />
-    </fieldset>
 
 
+<body class="bg-light">
 
-    <fieldset class="settings">
-      <legend>Tell Something About Yourself</legend>
-      <textarea id="comment" name="comment" value="<?= $user->getComment(); ?>" placeholder="Leave a comment"></textarea>
-    </fieldset>
+    <div class="container my-5">
+
+        <h1 class="mb-4 text-left">Profile Settings</h1>
+        <form id="profileForm" action="settings.php" method="post" class="needs-validation" novalidate>
+            
+            <!-- Basisdaten -->
+            <fieldset class="mb-4">
+              <legend class="text-primary">Base Data</legend>
+              <div class="form-floating mb-3">
+                <input type="text" id="firstname" name="firstname" class="form-control" 
+                 value="<?= htmlspecialchars($user->getFirstname()); ?>" placeholder="First Name" required>
+               <label for="firstname">First Name</label>
+               <div class="invalid-feedback">Please enter your first name.</div>
+             </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" id="surname" name="surname" class="form-control" 
+                  value="<?= htmlspecialchars($user->getSurname()); ?>" placeholder="Last Name" required>
+                <label for="surname">Last Name</label>
+                <div class="invalid-feedback">Please enter your last name.</div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <select id="beverage" name="beverage" class="form-select" placeholder="Coffee or Tea?" required>
+                  <option value="neither" <?= $user->getBeverage() == 'neither' ? "selected" : "" ?>>Neither</option>
+                  <option value="coffee" <?= $user->getBeverage() == 'coffee' ? "selected" : "" ?>>Coffee</option>
+                  <option value="tea" <?= $user->getBeverage() == 'tea' ? "selected" : "" ?>>Tea</option>
+                </select>
+                <label for="beverage">Coffee or Tea?</label>
+                <div class="invalid-feedback">Please select a beverage option.</div>
+              </div>
+            </fieldset>
 
 
+            <!-- Kommentar -->
+            <fieldset class="mb-4">
+              <legend class="text-primary">Tell Something About Yourself</legend>
+              <div class="mb-3">
+                <textarea id="comment" name="comment" class="form-control" rows="4"
+                 placeholder="Leave a comment"><?= htmlspecialchars($user->getComment()); ?></textarea>
+              </div>
+            </fieldset>
 
-    <fieldset class="settings">
-      <legend>Prefered Chat Layout</legend>
-      <label for="layout1">
-        <input type="radio" id="layout1" name="layout" value="layout1" <?= $user->layout == 'layout1' ? "checked" : "" ?> />
-        Username and message in one line </label><br />
-      <label for="layout2">
-        <input type="radio" id="layout2" name="layout" value="layout2" <?= $user->layout == 'layout2' ? "checked" : "" ?> />
-        Username and message in seperated lines </label><br />
-    </fieldset>
+            <!-- Layout-Präferenz -->
+            <fieldset class="mb-4">
+              <legend class="text-primary">Preferred Chat Layout</legend>
+              <div class="form-check">
+                <input type="radio" id="layout1" name="layout" value="layout1" 
+                  class="form-check-input" <?= $user->getLayout() == 'layout1' ? "checked" : "" ?> required>
+                <label for="layout1" class="form-check-label">Username and message in one line</label>
+              </div>
+                
+              <div class="form-check">
+                <input type="radio" id="layout2" name="layout" value="layout2" 
+                  class="form-check-input" <?= $user->getLayout() == 'layout2' ? "checked" : "" ?>>
+                <label for="layout2" class="form-check-label">Username and message in separate lines</label>
+              </div>
+              
+              <div class="invalid-feedback">Please select a layout option.</div>
+            </fieldset>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-evenly align-items-center">
+              <a href="friends.php" class="btn btn-secondary w-25">Cancel</a>
+              <button type="submit" class="btn btn-primary w-25" id="saveButton" disabled>Save</button>
+            </div>
+
+            <p class="mt-3 text-muted"><b>Last changed:</b> <?= htmlspecialchars($user->getHistory()); ?></p>
+        </form>
+    </div>
 
 
-    <div class="button-container">
-      <a href="friends.html">
-        <button class="grey" type="submit">
-          Cancel
-        </button>
-      </a>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      //der Submit button wird erst aktiviert, wenn alle Felder ausgefüllt sind
+        // Bootstrap-Formularvalidierung
+        (function () {
+            'use strict'
+            const form = document.getElementById('profileForm');
+            const saveButton = document.getElementById('saveButton');
+            const inputs = form.querySelectorAll('input, select, textarea');
 
-      <button class="blue" type="submit">
-        Save
-      </button>
-      <b>Last changed: <?= $user->getHistory()?></b>
-  </form>
-  </div>
+            // Funktion zur Überprüfung, ob alle Felder ausgefüllt sind
+            function checkFormValidity() {
+                const allValid = form.checkValidity();
+                saveButton.disabled = !allValid;
+            }
 
+            // Event-Listener für Eingaben
+            inputs.forEach(input => {
+                input.addEventListener('input', checkFormValidity);
+            });
 
-</body>
-
+            // Standard-Bootstrap-Validierung
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
+        })();
+    </script>
+  </body>
 </html>

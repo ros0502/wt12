@@ -62,7 +62,7 @@ class User implements JsonSerializable
 
     public function setBeverage($beverage)
     {
-        $this->surname = $beverage;
+        $this->beverage = $beverage;
     }
     public function setComment($comment)
     {
