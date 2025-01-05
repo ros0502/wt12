@@ -7,11 +7,13 @@ function getChatpartner() {
 
 // Funktion zum Formatieren der Uhrzeit (Stunde:Minute:Sekunde)
 function formatTime(timestamp) {
-    const date = new Date(timestamp * 1000);
-    let hours = date.getUTCHours();
-    let minutes = date.getUTCMinutes();
-    let seconds = date.getUTCSeconds();
+    const date = new Date(timestamp); // Zeitstempel in ein Datum umwandeln
 
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    // Formatierung: Einstellige Zahlen mit führender Null auffüllen
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -74,15 +76,19 @@ function displayMessages(messages) {
 
     messages.forEach(msg => {
         const messageElement = document.createElement("div");
-        messageElement.className = "message";
+        messageElement.className = "d-flex justify-content-between mb-2"; // Bootstrap-Klassen für Layout
         messageElement.innerHTML = `
-            <span class="sender">${msg.from}:</span> 
-            <span class="text">${msg.msg}</span> 
-            <span class="timestamp">${formatTime(msg.time)}</span>
+            <div>
+                <span class="sender fw-bold">${msg.from}:</span> 
+                <span class="text">${msg.msg}</span>
+            </div>
+            <span class="timestamp text-body-secondary">${formatTime(msg.time)}</span>
         `;
         chatWindow.appendChild(messageElement);
     });
 }
+
+
 
 // Event-Listener beim Laden der Seite
 document.addEventListener("DOMContentLoaded", function () {
@@ -96,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const header = document.querySelector("h1");
     if (header) {
-        header.textContent = `Chat mit ${friend}`;
+        header.textContent = `Chat with ${friend}`;
     }
 
     // Nachrichten laden
