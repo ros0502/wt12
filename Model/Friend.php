@@ -1,6 +1,8 @@
 <?php
 namespace Model;
 
+require ("start.php");
+
 use JsonSerializable;
 
 class Friend implements JsonSerializable {
@@ -21,10 +23,14 @@ class Friend implements JsonSerializable {
     }
 
     public function accept(){
+
+        $service->acceptFriend($this->username);
         $this->status = 'accepted';
     }
     
     public function dismiss(){
+
+        $service->dismissFriend($this->username);
         $this->status = 'dismissed';
     }
 
