@@ -1,22 +1,31 @@
 <?php
 require("start.php");
-//Pfüfen, ob in der Session-Variable user gesetzt ist 
+
+// Überprüfen, ob die Session-Variable "user" gesetzt ist
 if (isset($_SESSION["user"]) && $_SESSION["user"] != null) {
-    //Laden und Abspeichern vom Userobject über Backend-Service
-    $user = $service->loadUser($_GET["user"]);
-    if ($user == false) {
-        //-> wenn kein user da -> friends.php
+    // Prüfen, ob der "user"-Parameter in der URL vorhanden ist
+    if (isset($_GET["user"]) && !empty($_GET["user"])) {
+        // Laden und Abspeichern vom Userobject über Backend-Service
+        $user = $service->loadUser($_GET["user"]);
+        if ($user == false) {
+            // Wenn kein User gefunden wird, zu friends.php weiterleiten
+            header("Location: friends.php");
+            exit();
+        }
+    } else {
+        // Wenn "user"-Parameter fehlt oder leer ist, zu friends.php weiterleiten
         header("Location: friends.php");
         exit();
     }
 } else {
-    //-> wenn nicht -> login.php
+    // Wenn Session-Variable "user" nicht gesetzt ist, zu login.php weiterleiten
     header("Location: login.php");
     exit();
 }
-//Wenn in der URL delete gibt-> ruf auf
+
+// Wenn der "delete"-Parameter in der URL vorhanden ist
 if (isset($_GET["delete"])) {
-    //-> lösch freund und geh zu friends.php
+    // Freund löschen und zu friends.php weiterleiten
     $service->removeFriend($_GET["user"]);
     header("Location: friends.php");
     exit();
@@ -41,10 +50,12 @@ if (isset($_GET["delete"])) {
             <a href="chat.php">&lt;
                 Back to Chat
             </a> |
-
-            <a href=<?= "profile.php?user=" . $_GET["user"] ."&delete=1" ?>>
-                Remove Friend
-            </a>
+            <?php if (isset($_GET["user"])): ?>
+        <a href=<?= "profile.php?user=" . htmlspecialchars($_GET["user"]) . "&delete=1" ?>>
+            Remove Friend
+        </a>
+    <?php endif; ?>
+</p>
         </p>
     </div>
 
