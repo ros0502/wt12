@@ -1,45 +1,43 @@
 <?php
 namespace Model;
 
+require ("start.php");
+
 use JsonSerializable;
 
 class Friend implements JsonSerializable {
 
-    private ?string $username;
-    private ?string $status;
+    private $username;
+    private $status;
 
-    // Konstruktor
-    public function __construct(?string $username = null, ?string $status = null) {
+    public function __construct($username = null) {
         $this->username = $username;
-        $this->status = $status;
     }
 
-    // Getter für username
-    public function getUsername(): ?string {
+    public function getUsername(){
         return $this->username;
     }
 
-    // Getter für status
-    public function getStatus(): ?string {
+    public function getStatus(){
         return $this->status;
     }
 
-    // Methode zum Setzen des Status auf "accepted"
-    public function accept(): void {
+    public function accept(){
+
+        $service->acceptFriend($this->username);
         $this->status = 'accepted';
     }
+    
+    public function dismiss(){
 
-    // Methode zum Setzen des Status auf "dismissed"
-    public function dismiss(): void {
+        $service->dismissFriend($this->username);
         $this->status = 'dismissed';
     }
 
-    // Implementierung der JsonSerializable-Schnittstelle
     public function jsonSerialize(): mixed {
         return get_object_vars($this);
     }
 
-    // Statische Methode zur Deserialisierung von JSON in eine Friend-Instanz
     public static function fromJson(object $data): Friend {
         $friend = new Friend();
         foreach ($data as $key => $value) {
@@ -48,7 +46,4 @@ class Friend implements JsonSerializable {
         return $friend;
     }
 }
-
-
-
 ?>

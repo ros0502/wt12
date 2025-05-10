@@ -9,11 +9,14 @@ function checkInputs() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   var confirmPassword = document.getElementById('confirmPassword').value;
-  var status = true;
+  var status = false;
 
   //Farben für die Border
   var redBorder = "2px solid #D40808";
   var greenBorder = "2px solid #04AA6D";
+
+  inputElement.classList.remove('is-valid', 'is-invalid');
+
 
   var xmlhttp = new XMLHttpRequest();
 
@@ -26,7 +29,8 @@ function checkInputs() {
         status = false;
       } else {
         console.log("Username available");
-        document.getElementById('username').style.border = greenBorder; //Green border mit CSS
+        //document.getElementById('username').style.border = greenBorder; //Green border mit CSS
+        username.classList.add('is-valid')
         
       }
       

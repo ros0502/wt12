@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+
 require("start.php");
 
 // Check if the user is logged in

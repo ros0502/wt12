@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <?php
 require_once 'start.php';  // Assuming start.php sets up session and other initial settings
 
